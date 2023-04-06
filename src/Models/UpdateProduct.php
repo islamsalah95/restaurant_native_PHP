@@ -2,14 +2,15 @@
 namespace Models;
 
 use Conection\Conection;
+use conection\DatabaseSingleton;
 
 class UpdateProduct
 {
 	public function update($id,$name,$price,$img,$description,$categorie_id)
 	{
 
-			$connect = new Conection();
-			$conn = $connect->connect();
+		$connect = DatabaseSingleton::getInstance()->getConnection();
+		$conn =$connect->connect();
 			$sql = "
 			UPDATE products SET 
 			`name`='$name',  

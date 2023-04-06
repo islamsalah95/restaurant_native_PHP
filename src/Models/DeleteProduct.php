@@ -3,14 +3,15 @@
 namespace Models;
 
 use Conection\Conection;
+use conection\DatabaseSingleton;
 
 class DeleteProduct
 {
 	public function delete($id)
 	{
 
-	    $connect = new Conection();
-		$conn = $connect->connect();
+		$connect = DatabaseSingleton::getInstance()->getConnection();
+		$conn =$connect->connect();
 		$sql = "DELETE FROM products WHERE id=$id";
 
 		if ($conn->query($sql) === TRUE) {

@@ -2,14 +2,15 @@
 namespace Models;
 
 use Conection\Conection;
+use conection\DatabaseSingleton;
 
 class CreateProduct
 {
 	public function create($name,$price,$img,$desccraption,$categorie_id)
 	{
 
-			$connect = new Conection();
-			$conn = $connect->connect();
+		$connect = DatabaseSingleton::getInstance()->getConnection();
+		$conn =$connect->connect();
 			$sql = "INSERT INTO products (`name`,`price`,`img`,`desccraption`,`categorie_id`) VALUES ('$name',$price,'$img','$desccraption',$categorie_id)";
 	
 	

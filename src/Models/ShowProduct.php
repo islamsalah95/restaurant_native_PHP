@@ -2,14 +2,15 @@
 namespace Models;
 
 use Conection\Conection;
+use conection\DatabaseSingleton;
 
 class ShowProduct
 {
 	public function Show($categorie_id)
 	{
 
-		$connect = new Conection();
-		$conn = $connect->connect();
+		$connect = DatabaseSingleton::getInstance()->getConnection();
+		$conn =$connect->connect();
 
 		$sql = "SELECT * FROM products where categorie_id=$categorie_id";
 
@@ -24,8 +25,8 @@ class ShowProduct
 	public function ShowSingle($id)
 	{
 
-		$connect = new Conection();
-		$conn = $connect->connect();
+		$connect = DatabaseSingleton::getInstance()->getConnection();
+		$conn =$connect->connect();
 
 		$sql = "SELECT * FROM products where id=$id";
 

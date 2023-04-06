@@ -1,13 +1,15 @@
 <?php
 namespace Models;
 use Conection\Conection;
+use conection\DatabaseSingleton;
+
 class User
 {
 	public function login($email,$password)
 	{
 
-		$connect = new Conection();
-		$conn = $connect->connect();
+		$connect = DatabaseSingleton::getInstance()->getConnection();
+		$conn =$connect->connect();
 
 		$sql = "SELECT * FROM users where email='$email'";
 		$result = $conn->query($sql);
