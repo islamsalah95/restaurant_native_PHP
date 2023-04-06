@@ -5,10 +5,9 @@ use Conection\Conection;
 
 class UpdateProduct
 {
-	public function update($id,$name,$price,$img,$categorie_id)
+	public function update($id,$name,$price,$img,$description,$categorie_id)
 	{
 
-		if ($_SESSION["Islogin"]) {
 			$connect = new Conection();
 			$conn = $connect->connect();
 			$sql = "
@@ -16,6 +15,7 @@ class UpdateProduct
 			`name`='$name',  
 			`price`=$price, 
 			`img`='$img',
+			`desccraption`='$description',
 			`categorie_id`='$categorie_id'
 			WHERE `id`='$id'
 		";
@@ -28,10 +28,7 @@ class UpdateProduct
 			}
 	
 			$conn->close();
-		} else {
-			echo "only login can access this";
 
-		}
 
 
 	}

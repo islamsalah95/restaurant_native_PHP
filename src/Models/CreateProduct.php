@@ -2,17 +2,15 @@
 namespace Models;
 
 use Conection\Conection;
-session_start();
 
 class CreateProduct
 {
-	public function create($name,$price,$img,$categorie_id)
+	public function create($name,$price,$img,$desccraption,$categorie_id)
 	{
 
-		if ($_SESSION["Islogin"]) {
 			$connect = new Conection();
 			$conn = $connect->connect();
-			$sql = "INSERT INTO products (`name`,`price`,`img`,`categorie_id`) VALUES ('$name',$price,'$img',$categorie_id)";
+			$sql = "INSERT INTO products (`name`,`price`,`img`,`desccraption`,`categorie_id`) VALUES ('$name',$price,'$img','$desccraption',$categorie_id)";
 	
 	
 			if ($conn->query($sql) === TRUE) {
@@ -22,10 +20,7 @@ class CreateProduct
 			}
 	
 			$conn->close();
-		} else {
-			echo "only login can access this";
 
-		}
 		
 
 	}

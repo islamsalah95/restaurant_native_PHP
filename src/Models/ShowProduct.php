@@ -21,7 +21,23 @@ class ShowProduct
 
 	}
 
+	public function ShowSingle($id)
+	{
 
+		$connect = new Conection();
+		$conn = $connect->connect();
+
+		$sql = "SELECT * FROM products where id=$id";
+
+		$result = $conn->query($sql);
+		$results = $result -> fetch_assoc();
+
+		$conn->close();
+
+		return $results ;
+
+
+	}
 
 
 }

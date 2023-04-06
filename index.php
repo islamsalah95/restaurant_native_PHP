@@ -1,6 +1,7 @@
-<?php require_once("./src/Viwes/Frontend/Header.php");  ?>
+<?php require_once("./src/FrontFiles/Frontend/Header.php");  ?>
 <?php
 use Models\ShowProduct;
+$food = new ShowProduct();
 ?>
 
 <!-- Menu Start -->
@@ -44,7 +45,6 @@ use Models\ShowProduct;
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
                         <?php
-                        $food = new ShowProduct();
                         $breakFast = $food->Show(1);
                         if ($breakFast->num_rows > 0) {
                             // output data of each row
@@ -89,8 +89,7 @@ use Models\ShowProduct;
                 <div id="tab-2" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
                         <?php
-                        $food2 = new ShowProduct();
-                        $launch = $food2->Show(2);
+                        $launch = $food->Show(2);
                         if ($launch->num_rows > 0) {
                             // output data of each row
                             while ($row2 = $launch->fetch_assoc()) {
@@ -132,8 +131,7 @@ use Models\ShowProduct;
                 <div id="tab-3" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
                         <?php
-                        $food3 = new ShowProduct();
-                        $dinner = $food3->Show(3);
+                        $dinner = $food->Show(3);
                         if ($dinner->num_rows > 0) {
                             // output data of each row
                             while ($row3 = $dinner->fetch_assoc()) {
@@ -174,9 +172,7 @@ use Models\ShowProduct;
 </div>
 <!-- Menu End -->
 
-<?php require_once("./src/Viwes/Frontend/Footer.php");  ?>
-
-
+<?php require_once("./src/FrontFiles/Frontend/Footer.php");  ?>
 <?php
 // // use Models\User;
 // // use Models\CreateProduct;

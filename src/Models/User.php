@@ -1,9 +1,6 @@
 <?php
 namespace Models;
-
 use Conection\Conection;
-session_start();
-
 class User
 {
 	public function login($email,$password)
@@ -16,8 +13,6 @@ class User
 		$result = $conn->query($sql);
 
 
-
-
 		if ($result->num_rows > 0) {
 			// output data of each row
 			if ($result->num_rows > 0) {
@@ -25,12 +20,11 @@ class User
 				while($row = $result->fetch_assoc()) {
 					$hashed_password = $row['password'];
 					if (password_verify($password, $hashed_password)) {
-						echo "Password is valid!";
-					return	$_SESSION["Islogin"] = true;
-
+						echo "Password is valid! from databse login success";
+					return	true;
 					} else {
-						echo "Invalid password.";
-						return	$_SESSION["Islogin"] = false;
+						// echo "Invalid password from database.";
+						return	 false;
 					}
 				  echo "<br>";
 				}
